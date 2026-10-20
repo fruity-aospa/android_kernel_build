@@ -1,3 +1,4 @@
+ifeq ($(TARGET_COMPILE_WITH_MSM_KERNEL),true)
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 
 include device/qcom/kernelscripts/legacy_definitions.mk
@@ -353,4 +354,5 @@ $(RTIC_DTB): $(INSTALLED_KERNEL_TARGET)
 $(INSTALLED_DTBIMAGE_TARGET): $(INSTALLED_KERNEL_TARGET) $(RTIC_DTB)
 	cat $(shell find $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtb" | sort) > $@
 
+endif
 endif
